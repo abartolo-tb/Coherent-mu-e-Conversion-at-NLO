@@ -56,6 +56,8 @@ function overlapIntegralsProton()
     % Clear unneeded variables
     clear gmu fmu gem fem gep fep t1 u1em u2em ...
                                 u1ep u2ep u1mu u2mu bE
+
+    save('preMonteCarlo.mat')
     
 %%%%% Consider proton distributions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     tic;
@@ -249,7 +251,7 @@ function zFunc = lepOver(n1,n2,rValues,kValues,ge,fe,gmu,fmu)
     fmuM = fmu*(197.327)^(3/2);
     % Initialize zFunc
     zFunc = zeros(size(kValues,1),1);
-    if(n1==1)
+    if(n1==2)
         if(n2==1)
             for ind=1:size(kValues,1)
                 k = kValues(ind);
@@ -287,7 +289,7 @@ function zFunc = lepOver(n1,n2,rValues,kValues,ge,fe,gmu,fmu)
         else
             error('Invalid value for n2.')
         end
-    elseif(n1==2)
+    elseif(n1==1)
         if(n2==1)
             for ind=1:size(kValues,1)
                 k = kValues(ind);
